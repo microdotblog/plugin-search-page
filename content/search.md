@@ -9,13 +9,6 @@ weight: 100
 
 var archive_results = {};
 
-function hideHeader() {
-	var tags = document.getElementsByTagName("header");
-	if (tags.length > 0) {
-		tags[0].parentNode.removeChild(tags[0]);
-	}
-}
-
 function downloadArchive() {
 	var xmlhttp = new XMLHttpRequest();
 	xmlhttp.onreadystatechange = function() {
@@ -62,7 +55,6 @@ function runSearch(q) {
 	} 
 }
 
-hideHeader();
 downloadArchive();
 
 </script>
@@ -71,10 +63,6 @@ downloadArchive();
 
 #search {
 	display: none;
-}
-
-.post {
-	margin-top: 0px;
 }
 
 .field {
