@@ -73,6 +73,10 @@ downloadArchive();
 	display: none;
 }
 
+.post {
+	margin-top: 0px;
+}
+
 .field {
 	width: 270px;
 	height: 34px;
@@ -81,6 +85,7 @@ downloadArchive();
 	padding-left: 12px;
 	border: 2px solid #eee;
 	margin-top: 20px;
+	margin-bottom: 20px;
 	border-radius: 17px;
 	-webkit-appearance: none;
 }
