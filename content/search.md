@@ -33,7 +33,9 @@ function runSearch(q) {
 	if (q.length > 0) {
 		for (var i = 0; i < archive_results.items.length; i++) {
 			var item = archive_results.items[i];
-			if (item.content_text.toLowerCase().includes(q)) {
+			var title_lower = item.title.toLowerCase();
+			var text_lower = item.content_text.toLowerCase();
+			if (title_lower.includes(q) || text_lower.includes(q)) {
 				var p_node = document.createElement("p");        
 				var link_node = document.createElement("a");
 				var d = Date.parse(item.date_published);
