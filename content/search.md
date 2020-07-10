@@ -36,18 +36,22 @@ function runSearch(q) {
 				var date_node = document.createTextNode(date_s); 
 				link_node.appendChild(date_node);
 				link_node.href = item.url;
-				var s;
+              	var title_node = null;
 				if (item.title.length > 0) {
+              		title_node = document.createElement("span");
+                  	title_node.innerHTML = ": <b>" + item.title + "</b>"
 					s = item.title + ": " + item.content_text;
 				}
-				else {
-					s = item.content_text;
-				}
+				var s = item.content_text;
 				if (s.length > 200) {
 					s = s.substr(0, 200) + "...";
 				}
-				var text_node = document.createTextNode(": " + s); 
+              	var text_node = document.createElement("span");
+             	text_node.innerHTML = ": " + s
 				p_node.appendChild(link_node);
+              	if (title_node != null) {
+					p_node.appendChild(title_node);
+              }
 				p_node.appendChild(text_node);
 				results_node.appendChild(p_node);
 			}
@@ -86,3 +90,4 @@ downloadArchive();
 
 <div id="list_results">
 </ul>
+
