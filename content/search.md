@@ -48,6 +48,14 @@ function runSearch(q) {
 	} 
 }
 
+function submitSearch(q) {
+	runSearch(q);
+	
+	const url = new URL(window.location.href);
+	url.searchParams.set("q", q);
+	history.pushState({}, "", url);
+}
+
 document.addEventListener("DOMContentLoaded", function() {
 	fetch("/archive/index.json").then(response => response.json()).then(data => {
 		archive_results = data;
@@ -86,7 +94,7 @@ document.addEventListener("DOMContentLoaded", function() {
 </style>
 
 <form onSubmit="return false;">
-	<input class="field" type="text" name="q" id="input_search" placeholder="Search" onChange="runSearch(this.value.toLowerCase());" />
+	<input class="field" type="text" name="q" id="input_search" placeholder="Search" onChange="submitSearch(this.value.toLowerCase());" />
 </form>
 
 <div id="list_results">
