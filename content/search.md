@@ -9,17 +9,6 @@ weight: 100
 
 var archive_results = {};
 
-function downloadArchive() {
-	var xmlhttp = new XMLHttpRequest();
-	xmlhttp.onreadystatechange = function() {
-		if (this.readyState == 4 && this.status == 200) {
-			archive_results = JSON.parse(this.responseText);
-		}
-	};
-	xmlhttp.open("GET", "/archive/index.json", true);
-	xmlhttp.send();
-}
-
 function runSearch(q) {
 	var results_node = document.getElementById("list_results");
 	results_node.innerHTML = "";
@@ -59,16 +48,18 @@ function runSearch(q) {
 	} 
 }
 
-downloadArchive();
-
 document.addEventListener("DOMContentLoaded", function() {
-	const url = window.location.href;
-	const params = new URLSearchParams(new URL(url).search);
-	const q = params.get("q");
-	if (q && (q.length > 0)) {
-		document.getElementById("input_search").value = q;
-		runSearch(q);
-	}	
+	fetch("/archive/index.json").then(response => response.json()).then(data => {
+		archive_results = data;
+
+		const url = window.location.href;
+		const params = new URLSearchParams(new URL(url).search);
+		const q = params.get("q");
+		if (q && (q.length > 0)) {
+			document.getElementById("input_search").value = q;
+			runSearch(q);
+		}	
+	});
 });
 	
 </script>
