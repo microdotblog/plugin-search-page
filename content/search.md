@@ -61,6 +61,16 @@ function runSearch(q) {
 
 downloadArchive();
 
+document.addEventListener("DOMContentLoaded", function() {
+	const url = window.location.href;
+	const params = new URLSearchParams(new URL(url).search);
+	const q = params.get("q");
+	if (q && (q.length > 0)) {
+		document.getElementById("input_search").value = q;
+		runSearch(q);
+	}	
+});
+	
 </script>
 
 <style>
