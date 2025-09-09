@@ -98,5 +98,5 @@ document.addEventListener("DOMContentLoaded", function() {
 </form>
 
 <div id="list_results">
-</ul>
+</div>
 
