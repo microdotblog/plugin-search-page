@@ -1,5 +1,5 @@
 {
-  "version": "1.0.3",
+  "version": "1.1",
   "title": "Search page",
   "description": "Adds a Search page to the navigation of your blog, with fast search by loading all your posts from the archive."
 }
