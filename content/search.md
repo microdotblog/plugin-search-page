@@ -3,6 +3,7 @@ title: "Search"
 url: "/search/"
 menu: "main"
 weight: 100
+markup: "html"
 ---
 
 <div class="search-page">
