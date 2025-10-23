@@ -8,12 +8,16 @@
 		{{- $list := (where .Site.Pages "Type" "post") -}}
 		{{- $len := (len $list) -}}
 		{{ range $index, $value := $list }}
+			{{- $tags := default (slice) .Params.tags -}}
+			{{- $categories := default (slice) .Params.categories -}}
 			{
 				"id": "{{ .Permalink }}",
 				"title": {{ .Title | jsonify }},
 				"content_text": {{ .Plain | jsonify }},
 				"date_published": "{{ .Date.Format "2006-01-02T15:04:05-07:00" }}",
-				"url": "{{ .Permalink }}"
+				"url": "{{ .Permalink }}",
+				"tags": {{ $tags | jsonify }},
+				"categories": {{ $categories | jsonify }}
 			}
 			{{- if ne (add $index 1) $len -}},{{- end -}}
 		{{ end }}
